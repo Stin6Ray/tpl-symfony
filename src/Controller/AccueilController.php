@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+
 final class AccueilController extends AbstractController
 {
     #[Route('/accueil', name: 'app_accueil')]
@@ -29,7 +30,22 @@ final class AccueilController extends AbstractController
         return new Response("<h1>Profil de l'utilisateur n°$id</h1>");
     }
     
+     #[Route('/articles', name: 'app_articles')]
+    public function articles(): Response
+    {
+        $articles = [
+            ['titre' => 'Introduction à Symfony', 'auteur' => 'Alice', 'publie' => true],
+            ['titre' => 'Les bases de Twig', 'auteur' => 'Bob', 'publie' => true],
+            ['titre' => 'Doctrine ORM en pratique', 'auteur' => 'Claire', 'publie' => false],
+            ['titre' => 'Sécurité avec Symfony', 'auteur' => 'David', 'publie' => true],
+            ['titre' => 'API Platform (brouillon)', 'auteur' => 'Eve', 'publie' => false],
+        ];
 
-  
+        return $this->render('articles/index.html.twig', [
+            'articles' => $articles,
+        ]);
+    }
+
+
 }
 
