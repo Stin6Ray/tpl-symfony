@@ -32,6 +32,14 @@ rticle</a>
 <td>{{ article.titre }}</td>
 <td>{{ article.auteur }}</td>
 <td>{{ article.dateCreation|date('d/m/Y') }}</td>
+<td>
+
+<a href="{{ path('app_article_detail', {id: article.id}) }}" class="btn btn-
+outline-primary btn-sm">
+
+👁 Voir
+</a>
+</td>
 <td class="text-center">
 {% if article.publie %}
 <span class="badge bg-success">✅ Publié</span>
